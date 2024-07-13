@@ -1,0 +1,63 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Git Subham Londhe+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1- Git(VCS) is a version control system. i will store every version of chagnes which you are changing in your code or files. means when ever i modify anything i becomes new version nad we can go back on any version .
+
+Git commands:
+
+1- git init: the folder and file inside you want to version control should apply git init.
+
+###note: after git init you should have configure the git in your system.
+git config --global user.name "surya"
+git config --global user.email "surya.p@50hertz.in"
+
+2- git status : it will told you branch name you have and status of file while it is ready to commit od not.
+
+3- git add: it will add the file then the file is ready to commit means adding a file .
+
+4- git commit: This command will commit the chnages of files and used to track the staged file.
+
+5- git branch: told you your current branch
+
+6- git checkout -b dev: this command will leave master branch and switch to new branch dev and this branch (dev) also have same file. ( -b only use for create new branch)
+
+7- git checkout -b master : this command will again will get back to master branch.
+
+8- git restore --staged test.txt to switch from track to untrack( stage to unstage).
+
+##Note: only file you commited will can back after deleted:
+  note: when after commit you delete the file you should have to add and commit the deleted file. then it will not show deleted file in giut status.
+
+process-
+
+- commit the files
+
+- delete the files
+
+9- using git log view the commit id
+
+10- git revert < commit id of file name>   ( this command will bring back your deletd file.)
+
+
+
+######################################################################################################
+
+Point to remember: From the start when we have master branch and have a file abc.txt then we commited it . after that when we created new branch and switch to the newly created dev branch . now here is also abc.txt is availble again here we create test.txt file now on dev brach we have two file but test.txt is still not commited from dev branch. and when we switch master from dev. again we find only one file on master which is abc.txt.
+
+##############################################################################################
+
+- Git reposirtoty is folder where is .git is stote.
+
+11- git clone: to copy the git repo from github to your local system
+
+
+## Git Ftech vs Git Pull
+
+- Git Fetch: it will pick the only new chnages in your repo to your local repo only not in your working directory means it will only show the changes in your branch but not merge it in your local branch . to apply the changes in your local wokr dir you have to merge it.
+
+- Git Pull : git fetch + git pull
+
+Git pull will pick the fresh chnages from remote repo and apply in your workdir. this will apply only the current branch.
+
+
+
+
+

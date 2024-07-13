@@ -1,0 +1,181 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Bash script ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1- for debug mode use set -X in the begining in the bash script.
+2- for combining two command we use && and | where | pass commnd output to next command like
+
+example : df -Th && free -h
+          ps -aux | grep httpd
+
+but when date | echo "today is "
+ output: today is 
+
+
+why i doest not print date with today
+
+bcoz date is a system default command it send the output to stdin and pipe only send the output to stdout
+[root@surya ~]# ps aux | grep docker
+root      4861  0.0  0.0 1497812 1956 ?        Sl   Jul09   0:00 /usr/local/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.17.0.6 -container-
+
+----
+[root@surya ~]# date | echo "today"
+today
+----------------------------------------------------------------------------------
+
+3 AWk command
+
+- it is very patterm scanning command
+
+- with the help of this command we can print the specific column or row.
+
+example 1:
+
+[root@surya ~]# ps aux | grep docker
+root      4861  0.0  0.0 1497812 1956 ?        Sl   Jul09   0:00 /usr/local/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.17.0.6 -container-port 8080
+root      4868  0.0  0.0 1489872 1844 ?        Sl   Jul09   0:00 /usr/local/bin/docker-proxy -proto tcp -host-ip :: -host-port 8080 -container-ip 172.17.0.6 -container-port 8080
+root     12598  0.0  0.0 112820   984 pts/12   S+   10:32   0:00 grep --color=auto docker
+
+
+[root@surya ~]# ps aux | grep docker | awk '{print $4}'
+0.0
+0.0
+0.0
+0.1
+0.0
+0.0
+----
+example 2:
+
+[root@surya Bash]# cat name.txt
+my name is surya
+[root@surya Bash]# grep surya name.txt 
+my name is surya
+[root@surya Bash]# grep surya name.txt | awk '{print $4}'
+surya
+---
+
+#!/bin/bash
+#############
+
+# Author: Surya
+########################
+
+#Purpose= node health
+#############################
+
+set -x #debug mode
+#set -e #exit the script when there is an error
+#set -o #pipefail
+
+#exaple crate user, create file, add user in a file
+jkjekje
+
+df -Th
+
+free -h
+-----> note: this script execute and will not through the error and run completely. thats why we should use set -e
+
+- set -e only looks for the last command is right or not 
+
+
+#!/bin/bash
+#############
+
+# Author: Surya
+########################
+
+#Purpose= node health
+#############################
+
+set -x #debug mode
+set -e #exit the script when there is an error
+#set -o #pipefail
+
+#exaple crate user, create file, add user in a file
+jkjekje
+
+df -Th
+
+free -h
+
+----> here the script is going to be exit becoz of the wrong command but
+
+
+#!/bin/bash
+#############
+
+# Author: Surya
+########################
+
+#Purpose= node health
+#############################
+
+set -x #debug mode
+set -e #exit the script when there is an error
+set -o #pipefail
+
+#exaple crate user, create file, add user in a file
+jkjekje | echo 
+
+df -Th
+
+free -h
+
+-- it will execute without any error
+
+---> and
+
+#!/bin/bash
+#############
+
+# Author: Surya
+########################
+
+#Purpose= node health
+#############################
+
+set -x #debug mode
+set -e #exit the script when there is an error
+set -o #pipefail
+
+#exaple crate user, create file, add user in a file
+jkjekje | echo | jeijejr
+
+df -Th
+
+free -h
+
+----again for this the set -e gives you the error
+
+### but for this we use set -o for pipefail
+
+#!/bin/bash
+#############
+
+# Author: Surya
+########################
+
+#Purpose= node health
+#############################
+
+set -x #debug mode
+set -e #exit the script when there is an error
+set -o #pipefail
+
+#exaple crate user, create file, add user in a file
+jkjekje | echo
+
+df -Th
+
+free -h
+---> Now the script will not execute even the pipe is here and the last command is right.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+##what is the major issue for devops engineer
+ - look on the log file.
+
+
+
+
+
+
+
